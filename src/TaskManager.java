@@ -51,18 +51,30 @@ public class TaskManager {
     //Ora il metodo che ci permette di segnare come completato un Task ogni volta che l'utente lo completa.
     // completeTask prenderà come parametro la posizione del task nella lista, e lo segna come completato.
     public void completeTask(int index){
-        //prendo quindi il task che devo segnare come completato alla posizione index
-        Task task = tasks.get(index);
-        //Il task ora tramite il setter verrà segnato come completato
-        task.setCompleted();
+        //Costrutto try catch:
+        // Ci serve nel caso in cui l'utente inserisce un index non valido
+        try{
+            Task task = tasks.get(index);
+            //Il task ora tramite il setter verrà segnato come completato
+            task.setCompleted();
+        }catch (IndexOutOfBoundsException e){
+            System.out.println("Errore: indice non valido,task non trovato");
+
+        }        //prendo quindi il task che devo segnare come completato alla posizione index
 
     }
-    
 
     //Metodo che invece serve per eliminare un task dall'arrayList di tasks
     public void deleteTask(int index){
-        //Rimuovo l'oggetto nell'arrayList task nella posizione index
-        tasks.remove(index);
+        //Costrutto try catch:
+        // Ci serve nel caso in cui l'utente inserisce un index non valido
+        try{
+            //Rimuovo l'oggetto nell'arrayList task nella posizione index
+            tasks.remove(index);
+        }catch (IndexOutOfBoundsException e){
+            System.out.println("Errore: indice non valido,task non trovato");
+
+        }
 
     }
 
